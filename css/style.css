@@ -1,0 +1,723 @@
+/* ここから下に記載していく */
+/* about */
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.header__nav li{
+    margin-left: 40px;
+}
+
+  @media screen and (max-width:768px){
+    .log img{
+      width: 60%;
+      margin-left: 25%;
+    }
+  }
+
+
+
+/* ハンバーガーメニュー */
+/*============
+nav
+=============*/
+nav {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: -300px;
+  bottom: 0;
+  width: 300px;
+  background: #ffffff;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  transition: .5s;
+  z-index: 3;
+}
+.open nav {
+  left: 0;
+}
+nav .inner {
+  padding: 25px;
+}
+nav .inner ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+nav .inner ul li {
+  position: relative;
+  margin: 0;
+  border-bottom: 1px solid #333;
+}
+nav .inner ul li a {
+  display: block;
+  color: #333;
+  font-size: 14px;
+  padding: 1em;
+  text-decoration: none;
+  transition-duration: 0.2s;
+}
+nav .inner ul li a:hover {
+  background: #e4e4e4;
+}
+@media screen and (max-width: 767px) {
+  nav {
+    left: -240px;
+    width: 240px;
+  }
+}
+/*============
+@keyframes
+=============*/
+@keyframes equalizer01 {
+  0% {
+    width: 70%;
+  }
+  10% {
+    width: 50%;
+  }
+  20% {
+    width: 100%;
+  }
+  30% {
+    width: 10%;
+  }
+  40% {
+    width: 50%;
+  }
+  50% {
+    width: 70%;
+  }
+  60% {
+    width: 50%;
+  }
+  70% {
+    width: 10%;
+  }
+  80% {
+    width: 100%;
+  }
+  90% {
+    width: 10%;
+  }
+  100% {
+    width: 70%;
+  }
+}
+@keyframes equalizer02 {
+  0% {
+    width: 30%;
+  }
+  10% {
+    width: 20%;
+  }
+  20% {
+    width: 40%;
+  }
+  30% {
+    width: 10%;
+  }
+  40% {
+    width: 20%;
+  }
+  50% {
+    width: 30%;
+  }
+  60% {
+    width: 20%;
+  }
+  70% {
+    width: 10%;
+  }
+  80% {
+    width: 40%;
+  }
+  90% {
+    width: 10%;
+  }
+  100% {
+    width: 30%;
+  }
+}
+/*============
+.toggle_btn
+=============*/
+.toggle_btn {
+  display: block;
+  position: fixed;
+  top: 30px;
+  left: 30px;
+  width: 60px;
+  height: 30px;
+  transform: translate(0, 0);
+  transition: all .5s;
+  cursor: pointer;
+  z-index: 3;
+}
+.open .toggle_btn {
+  left: 330px;
+}
+.toggle_btn span {
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background-color: #666;
+  transition: all .5s;
+}
+.toggle_btn span:nth-child(1) {
+  top: 5px;
+  width: 60px;
+  animation: equalizer01 7000ms infinite;
+}
+.toggle_btn span:nth-child(2) {
+  top: 15px;
+  width: 30px;
+  animation: equalizer02 5000ms infinite;
+  animation-delay: 0.33s;
+}
+.toggle_btn span:nth-child(3) {
+  top: 25px;
+  width: 20px;
+  animation: equalizer02 5000ms infinite;
+}
+.open .toggle_btn span {
+  background-color: #fff;
+  width: 30px;
+}
+.open .toggle_btn span:nth-child(1) {
+  transform: translate(0, 10px) rotate(-45deg);
+  animation: unset;
+}
+.open .toggle_btn span:nth-child(2) {
+  opacity: 0;
+  animation: unset;
+}
+.open .toggle_btn span:nth-child(3) {
+  transform: translate(0, -10px) rotate(45deg);
+  animation: unset;
+}
+@media screen and (max-width: 767px) {
+  .open .toggle_btn {
+    left: 260px;
+  }
+}
+/*============
+#mask
+=============*/
+#mask {
+  display: none;
+}
+.open #mask {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: .8;
+  z-index: 2;
+  cursor: pointer;
+  transition: all .5s;
+}
+/*============
+main
+=============*/
+main {
+  padding: 50px;
+}
+main h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  text-align: center;
+}
+/*============
+body
+=============*/
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+}
+
+/* ローディングアニメーション */
+/* vw画面幅_vh画面高さ */
+#animation {
+  width: 100vw;
+  height: 100vh;
+  transition: all 1s;
+  background-color: #ffffff;
+ 
+/* 以下のコードを追加 */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+}
+.loaded {
+  opacity: 0;
+  visibility: hidden;
+}
+/* ここからメインビジュアル */
+
+.main {
+    height: 65vh;
+    background:url(../img/main_visual.jpeg) ;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat; 
+}
+.main_tittle {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    padding-top: 250px;
+}
+.main_subtittle {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    padding-top: 30px;
+}
+.about_title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    padding-top: 60px;
+    margin-bottom: 20px;
+
+}
+.about_subtitle {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 30px;
+}
+.about_text {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 60px;
+    margin-bottom: 20px;
+    line-height: 35px;
+
+}
+/* 画像４つ */
+/* 横スクロール */
+.wrap{
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+
+}
+
+.slideshow{
+    display: flex;
+    animation: loop-slide 20s infinite linear 1s both;
+
+}
+@keyframes loop-slide {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+} 
+.content {
+    width: 25%;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+
+/* teacher */
+.Teacher_title{
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding-top: 60px;
+}
+.Teacher_text {
+    text-align: center;
+    font-size: 20px;
+    padding-top: 60px;
+    margin-bottom: 60px;
+}
+/* フェードイン */
+/*1.フェードインアニメーションの指定*/
+.scrollanime {opacity: 0;} /*一瞬表示されるのを防ぐ*/
+.fadeInDown {
+    animation-name: fadeInDown;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+}
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;         
+    }
+    100% {
+    opacity: 1;
+    transform: translate(0);
+    }
+}
+
+
+/* teacher画像＆テキスト */
+
+.flex_teacher_01{
+    display: flex;
+    height:  450px;
+    width: 1200px;
+    margin: 0 auto;
+ }
+ .flex_reverce{
+   flex-flow: row-reverse;
+ }
+ .flex_teacher_01 .flex_text{
+   height: 100%;
+   width: 70%;
+   margin: 0 20px;
+ }
+ .flex_teacher_01 .flex_text h3 {
+   font-weight: bold;  
+   font-size: 20px;
+   margin-bottom: 25px;
+    margin-top: 35px;
+
+
+ }
+ .flex_teacher_01 .flex_text p{
+     line-height: 35px;
+ }
+ 
+ .flex_teacher_01 .flex_img{
+   height: 100%;
+   width: 30%;
+ }
+ .flex_teacher_01 .flex_img img {
+   max-width: 100%;
+ }
+ @media screen and (max-width:768px){
+  .flex_teacher_01{
+    display: block;
+    height: auto;
+    width: 100%;
+  }
+  .flex_teacher_01 .flex_img{
+    width: 100%;
+  }
+  .flex_teacher_01 .flex_text{
+    width: auto;
+    margin: 15px ;
+  }
+} 
+ /* コース */
+
+.Course{
+    width: 1200px;
+    margin: 0 auto;
+}
+.Course_title{
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding-top: 60px;
+
+}
+.Course_subtitle {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+
+}
+.swiper-container {
+    max-width: 1200px;
+    margin: 30px 0;
+}
+@media screen and (max-width:768px){
+  .Course{
+    width: auto;
+  }
+  .swiper-container {
+    max-width: 100%;
+  }
+  .swiper-container img {
+    width:100vw;
+  }
+}
+/* schedule */
+.Schedule{
+  width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+}
+@media screen and (max-width:768px){
+  .Schedule{
+    width: auto;
+  }
+}
+a.btn-solid {
+  color: #fff;
+  border-top: 4px solid #48ecc4;
+  border-right: 4px solid #0a5f4a;
+  border-bottom: 4px solid #0f745b;
+  border-left: 4px solid #8cf9de;
+  border-radius: 0;
+  background: #11a37f;
+}
+
+a.btn-solid:hover {
+  color: #fff;
+  border-top: 4px solid #0f745b;
+  border-right: 4px solid #8cf9de;
+  border-bottom: 4px solid #48ecc4;
+  border-left: 4px solid #0a5f4a;
+}
+
+
+    
+  
+  
+
+
+
+/* NEWS */
+.News{
+    width: 1200px;
+    margin: 0 auto;
+}
+.News_title{
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding-top: 60px;
+
+}
+.News_subtitle {
+    text-align: center;
+    font-size: 20px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+}
+.News_box{
+    display: flex;
+    width: 1200px;
+    margin: 0 auto;
+}
+.News_item{
+    width: 25%;
+    padding: 0 10px;
+}
+@media screen and (max-width:768px){
+  .News{
+    width: auto;
+  }
+  .News_box{
+    width: auto;
+    flex-wrap: wrap;
+  }
+  .News_box > *{
+    flex-basis: 44%;
+  }
+}
+/*item内のimgをbox内に収める */
+.News_item img {
+    max-width: 100%;
+}
+.map{
+    width: 1200px;
+    margin: 0 auto; 
+}
+.Map_title{
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding-top: 60px;
+}
+.map-box {
+  overflow: hidden;
+  padding-bottom: 56.25%;
+  position: relative;
+  }
+  .map-box  iframe {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 500px;
+  width: 100%;
+  }
+
+@media screen and (max-width:768px){
+  .map {
+    width: auto;
+  }
+}
+
+/* フォーム */
+.Form_title{
+    font-size: 25px;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 20px;
+    padding-top: 60px;
+
+}
+.Form {
+    margin-top: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 720px;
+  }
+  @media screen and (max-width: 480px) {
+    .Form {
+      margin-top: 40px;
+    }
+  }
+  .Form-Item {
+    border-top: 1px solid #ddd;
+    padding-top: 24px;
+    padding-bottom: 24px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+  @media screen and (max-width: 480px) {
+    .Form-Item {
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-top: 16px;
+      padding-bottom: 16px;
+      flex-wrap: wrap;
+      width: auto;
+    }
+  }
+  .Form-Item:nth-child(5) {
+    border-bottom: 1px solid #ddd;
+  }
+  .Form-Item-Label {
+    width: 100%;
+    max-width: 248px;
+    letter-spacing: 0.05em;
+    font-weight: bold;
+    font-size: 18px;
+  }
+  @media screen and (max-width: 480px) {
+    .Form-Item-Label {
+      max-width: inherit;
+      display: flex;
+      align-items: center;
+      font-size: 15px;
+    }
+  }
+  .Form-Item-Label.isMsg {
+    margin-top: 8px;
+    margin-bottom: auto;
+  }
+  @media screen and (max-width: 480px) {
+    .Form-Item-Label.isMsg {
+      margin-top: 0;
+    }
+  }
+  .Form-Item-Label-Required {
+    border-radius: 6px;
+    margin-right: 8px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    width: 48px;
+    display: inline-block;
+    text-align: center;
+    background: #5bc8ac;
+    color: #fff;
+    font-size: 14px;
+  }
+  @media screen and (max-width: 480px) {
+    .Form-Item-Label-Required {
+      border-radius: 4px;
+      padding-top: 4px;
+      padding-bottom: 4px;
+      width: 32px;
+      font-size: 10px;
+    }
+  }
+  .Form-Item-Input {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-left: 40px;
+    padding-left: 1em;
+    padding-right: 1em;
+    height: 48px;
+    flex: 1;
+    width: 100%;
+    max-width: 410px;
+    background: #eaedf2;
+    font-size: 18px;
+  }
+  @media screen and (max-width: 480px) {
+    .Form-Item-Input {
+      margin-left: 0;
+      margin-top: 18px;
+      height: 40px;
+      flex: inherit;
+      font-size: 15px;
+    }
+  }
+  .Form-Item-Textarea {
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-left: 40px;
+    padding-left: 1em;
+    padding-right: 1em;
+    height: 216px;
+    flex: 1;
+    width: 100%;
+    max-width: 410px;
+    background: #eaedf2;
+    font-size: 18px;
+  }
+  @media screen and (max-width: 480px) {
+    .Form-Item-Textarea {
+      margin-top: 18px;
+      margin-left: 0;
+      height: 200px;
+      flex: inherit;
+      font-size: 15px;
+    }
+  }
+  .Form-Btn {
+    border-radius: 6px;
+    margin-top: 32px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 280px;
+    display: block;
+    letter-spacing: 0.05em;
+    background: #5bc8ac;
+    color: #fff;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  @media screen and (max-width: 480px) {
+    .Form-Btn {
+      margin-top: 24px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      width: 160px;
+      font-size: 16px;
+    }
+  }
